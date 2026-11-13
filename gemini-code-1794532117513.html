@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071923">
+<title>Drop — انقل ملفاتك بسهولة وسرعة</title>
+<style>
+:root {
+  --bg: #071923;
+  --panel: #0d2632;
+  --panel2: #102f3c;
+  --cyan: #22d3ee;
+  --cyan2: #06b6d4;
+  --text: #effcff;
+  --muted: #a6c1c9;
+  --line: #1b4552;
+  --glow: rgba(34, 211, 238, .18);
+  --green: #5eead4;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 50% -15%, #104052 0, transparent 48%), var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1040px, calc(100% - 36px)); margin: auto; }
+
+/* Header */
+header {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(124, 200, 215, .12);
+}
+.brand {
+  font-size: 23px;
+  font-weight: 850;
+  letter-spacing: -.7px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--cyan), #0891b2);
+  display: grid;
+  place-items: center;
+  color: #03202a;
+  font-weight: 900;
+  box-shadow: 0 0 28px var(--glow);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.status {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #0b202a;
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.lamp {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #64748b;
+  transition: .3s;
+}
+.lamp.on {
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
+.lang {
+  display: flex;
+  gap: 4px;
+  background: #0b202a;
+  border: 1px solid var(--line);
+  padding: 4px;
+  border-radius: 999px;
+}
+.lang button {
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+.lang button.active {
+  background: #164454;
+  color: var(--cyan);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 58px 0 36px;
+}
+.eyebrow {
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: .5px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 14px;
+  border: 1px solid #1d5665;
+  background: #0c2a36;
+  border-radius: 99px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+}
+h1 {
+  font-size: clamp(30px, 5vw, 50px);
+  line-height: 1.22;
+  letter-spacing: -1.2px;
+  margin: 20px auto 12px;
+  max-width: 780px;
+}
+.accent { color: var(--cyan); }
+.hero p {
+  font-size: 17px;
+  color: var(--muted);
+  margin: 0 auto;
+  max-width: 620px;
+}
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.step {
+  border: 1px solid var(--line);
+  background: rgba(12, 39, 50, .7);
+  border-radius: 999px;
+  padding: 6px 14px;
+  color: #c6e1e7;
+  font-size: 13px;
+}
+
+/* Live Transfer App Card */
+.app-section { margin: 10px 0 64px; }
+.card {
+  background: linear-gradient(155deg, rgba(17, 49, 62, .98), rgba(10, 32, 42, .98));
+  border: 1px solid #1c5566;
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .25), inset 0 0 0 1px rgba(34, 211, 238, .08);
+}
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: #081e28;
+  border: 1px solid #17404d;
+  padding: 5px;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+.tabs button {
+  flex: 1;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  padding: 11px;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  transition: .2s;
+}
+.tabs button.active {
+  background: linear-gradient(135deg, #22d3ee, #0891b2);
+  color: #03232d;
+  box-shadow: 0 4px 16px rgba(6, 182, 212, .25);
+}
+.panel { display: none; }
+.panel.active { display: block; }
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 24px;
+  align-items: start;
+}
+.panel h2 { margin: 0 0 6px; font-size: 22px; }
+.desc { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+
+/* Buttons & Inputs */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #2a9bb0;
+  background: linear-gradient(135deg, #22d3ee, #0891b2);
+  color: #03232d;
+  border-radius: 12px;
+  padding: 11px 18px;
+  font: inherit;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 7px 22px rgba(6, 182, 212, .16);
+  transition: .2s;
+}
+.btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.alt, .btn.secondary {
+  background: #123744;
+  color: #dffaff;
+  border-color: #285765;
+  box-shadow: none;
+}
+.field {
+  width: 100%;
+  background: #081e28;
+  border: 1px solid #245361;
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 12px;
+  font: inherit;
+  outline: none;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.field:focus { border-color: var(--cyan); }
+label {
+  display: block;
+  font-size: 13px;
+  color: #c8e4e9;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+
+/* QR Box & Dropzone */
+.qrbox {
+  min-height: 245px;
+  border: 1px dashed #327184;
+  background: #0a202a;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 18px;
+  text-align: center;
+}
+.qrbox canvas, .qrbox img {
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 185px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
+}
+.code {
+  font-size: 26px;
+  letter-spacing: 4px;
+  color: var(--cyan);
+  font-weight: 850;
+  margin-top: 10px;
+}
+.muted { color: var(--muted); font-size: 13px; }
+.drop {
+  border: 1px dashed #327184;
+  border-radius: 15px;
+  padding: 24px;
+  text-align: center;
+  background: #0a202a;
+  cursor: pointer;
+  transition: .2s;
+}
+.drop:hover, .drop.drag {
+  border-color: var(--cyan);
+  background: #103744;
+}
+.drop input { display: none; }
+.fileline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 11px;
+  background: #0a202a;
+  border: 1px solid #163d4a;
+  color: #d8f3f7;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.progress {
+  height: 8px;
+  background: #09202a;
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 14px 0 8px;
+}
+.bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #06b6d4, #67e8f9);
+  transition: width .15s;
+}
+.notice {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #0a202a;
+  border: 1px solid #1b4552;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 14px;
+}
+.notice.good { border-color: #17675e; color: #a7f3d0; background: rgba(23, 103, 94, .15); }
+.notice.bad { border-color: #8b3d4a; color: #fecdd3; background: rgba(139, 61, 74, .15); }
+.hidden { display: none !important; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+/* Methods Section */
+.section-head { text-align: center; margin: 45px 0 24px; }
+.section-head h2 { font-size: 25px; margin: 0 0 6px; }
+.section-head p { color: var(--muted); margin: 0; font-size: 14px; }
+.methods {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: auto;
+  gap: 18px;
+}
+.method {
+  position: relative;
+  background: linear-gradient(155deg, rgba(17, 49, 62, .96), rgba(10, 32, 42, .96));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 26px;
+  overflow: hidden;
+  transition: .2s;
+}
+.method:hover {
+  border-color: #26869a;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .18);
+}
+.method.primary {
+  border-color: #16788b;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, .08);
+}
+.tag {
+  font-size: 12px;
+  color: var(--cyan);
+  font-weight: 750;
+  margin-bottom: 12px;
+}
+.method h3 { font-size: 21px; margin: 0 0 7px; }
+.method p { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+.underlink {
+  display: inline-block;
+  margin-inline-start: 12px;
+  color: var(--cyan);
+  font-size: 13px;
+}
+.underlink:hover { text-decoration: underline; }
+
+/* Pair Illustration Section */
+.pair {
+  margin: 72px 0 65px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 25px;
+  align-items: center;
+}
+.pair-copy h2 { font-size: 28px; line-height: 1.3; margin: 0 0 12px; }
+.pair-copy p { color: var(--muted); margin: 0 0 17px; }
+.ticks { display: grid; gap: 10px; color: #cce4e9; font-size: 14px; }
+.ticks span:before {
+  content: "✓";
+  color: var(--cyan);
+  font-weight: 900;
+  margin-inline-end: 9px;
+}
+.visual {
+  border: 1px solid #1b5260;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 40%, #164858, transparent 60%), #0a222d;
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.devices { display: flex; align-items: center; gap: 22px; }
+.screen {
+  width: 155px;
+  height: 110px;
+  border: 2px solid #328296;
+  border-radius: 12px;
+  background: #0b2b38;
+  box-shadow: 0 0 35px var(--glow);
+  display: grid;
+  place-items: center;
+  color: var(--cyan);
+}
+.phone {
+  width: 62px;
+  height: 118px;
+  border: 2px solid #3b9aac;
+  border-radius: 14px;
+  background: #0c2b37;
+  display: grid;
+  place-items: center;
+  color: var(--cyan);
+}
+.linkline {
+  width: 35px;
+  height: 2px;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  position: relative;
+}
+.linkline:after {
+  content: "";
+  position: absolute;
+  right: 45%;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  background: #0b2732;
+}
+
+/* FAQ */
+.faq { padding-bottom: 70px; }
+.faq-list { max-width: 800px; margin: auto; display: grid; gap: 10px; }
+.faq details {
+  border: 1px solid var(--line);
+  background: rgba(13, 38, 50, .78);
+  border-radius: 15px;
+  padding: 0 19px;
+}
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 17px 0;
+  font-weight: 720;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:after {
+  content: "+";
+  color: var(--cyan);
+  font-size: 22px;
+  line-height: 1;
+}
+.faq details[open] summary:after { content: "−"; }
+.faq details p {
+  margin: 0;
+  padding: 0 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(124, 200, 215, .12);
+  padding: 24px 0 34px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.footlinks { display: flex; gap: 18px; flex-wrap: wrap; }
+.footlinks a:hover { color: var(--cyan); }
+
+/* Responsive */
+@media (max-width: 760px) {
+  .wrap { width: min(100% - 28px, 560px); }
+  header { height: 70px; }
+  .hero { padding: 42px 0 28px; }
+  .grid, .methods { grid-template-columns: 1fr; }
+  .pair { grid-template-columns: 1fr; margin: 52px 0; }
+  .visual { min-height: 220px; order: -1; }
+  .screen { width: 130px; height: 95px; }
+  .phone { height: 105px; }
+  .section-head h2 { font-size: 21px; }
+  .foot { justify-content: center; text-align: center; }
+  .footlinks { justify-content: center; }
+  .status span { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- Header -->
+  <header>
+    <a class="brand" href="#">
+      <span class="mark">D</span>
+      <span>Drop</span>
+    </a>
+    <div class="header-right">
+      <div class="status" title="Connection Status">
+        <i class="lamp" id="lamp"></i>
+        <span id="netStatus" data-ar="غير متصل" data-en="Disconnected">غير متصل</span>
+      </div>
+      <nav class="lang" aria-label="Language">
+        <button class="active" id="arBtn">عربي</button>
+        <button id="enBtn">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <span class="eyebrow">
+        <i class="dot"></i>
+        <span data-ar="بلا كابل · نقل مباشر مشفّر" data-en="No cable · Direct encrypted transfer">بلا كابل · نقل مباشر مشفّر</span>
+      </span>
+      <h1 data-ar="انقل الصور والملفات بين <span class='accent'>جوالك وكمبيوترك</span> في ثانية" data-en="Move photos and files between your <span class='accent'>phone and computer</span> in a second">
+        انقل الصور والملفات بين <span class="accent">جوالك وكمبيوترك</span> في ثانية
+      </h1>
+      <p data-ar="اربط جهازين برمز واحد مباشرة عبر المتصفح، ثم أرسل واستقبل الملفات فوراً دون الحاجة إلى حساب." data-en="Pair two devices with one code right in your browser, then send and receive files instantly without an account.">
+        اربط جهازين برمز واحد مباشرة عبر المتصفح، ثم أرسل واستقبل الملفات فوراً دون الحاجة إلى حساب.
+      </p>
+      <div class="steps">
+        <span class="step" data-ar="١. أنشئ رمز الربط" data-en="1. Create pairing code">١. أنشئ رمز الربط</span>
+        <span class="step" data-ar="٢. امسح الباركود أو أدخل الرمز" data-en="2. Scan QR or enter code">٢. امسح الباركود أو أدخل الرمز</span>
+        <span class="step" data-ar="٣. أرسل ملفاتك فوراً" data-en="3. Send files instantly">٣. أرسل ملفاتك فوراً</span>
+      </div>
+    </section>
+
+    <!-- Interactive WebRTC File Transfer Tool -->
+    <section class="app-section" id="transferApp">
+      <div class="card">
+        <div class="tabs">
+          <button class="active" data-tab="send" data-ar="إرسال ملفات" data-en="Send files">إرسال ملفات</button>
+          <button data-tab="receive" data-ar="استقبال ملفات" data-en="Receive files">استقبال ملفات</button>
+        </div>
+
+        <!-- Send Panel -->
+        <section class="panel active" id="send">
+          <div class="grid">
+            <div>
+              <h2 data-ar="أنشئ رابط اتصال" data-en="Create a connection link">أنشئ رابط اتصال</h2>
+              <p class="desc" data-ar="أنشئ غرفة على هذا الجهاز، ثم امسح رمز QR من الجهاز الآخر أو أدخل الرمز يدوياً." data-en="Create a room on this device, then scan the QR code from the other device or enter the code manually.">
+                أنشئ غرفة على هذا الجهاز، ثم امسح رمز QR من الجهاز الآخر أو أدخل الرمز يدوياً.
+              </p>
+              <button class="btn" id="createRoom" data-ar="إنشاء رمز الربط" data-en="Generate Pairing Code">إنشاء رمز الربط</button>
+              <div class="notice" id="sendNotice" data-ar="اضغط إنشاء رمز الربط للبدء." data-en="Click Generate Pairing Code to start.">اضغط إنشاء رمز الربط للبدء.</div>
+              
+              <div id="senderFiles" class="hidden">
+                <label for="fileInput" data-ar="اختر الملفات المراد إرسالها" data-en="Select files to send">اختر الملفات المراد إرسالها</label>
+                <div class="drop" id="drop">
+                  <input id="fileInput" type="file" multiple>
+                  <div style="font-size:27px;color:var(--cyan)">⇧</div>
+                  <b data-ar="اسحب الملفات هنا أو اضغط للاختيار" data-en="Drag files here or click to browse">اسحب الملفات هنا أو اضغط للاختيار</b>
+                  <div class="muted" data-ar="يمكنك اختيار أكثر من ملف" data-en="You can select multiple files">يمكنك اختيار أكثر من ملف</div>
+                </div>
+                <div id="fileList"></div>
+                <div class="progress"><div class="bar" id="sendBar"></div></div>
+                <div class="muted" id="sendProgress" data-ar="بانتظار اختيار الملفات" data-en="Waiting for files">بانتظار اختيار الملفات</div>
+                <div style="margin-top:14px">
+                  <button class="btn" id="sendFiles" disabled data-ar="إرسال الملفات" data-en="Send Files">إرسال الملفات</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="qrbox">
+              <div id="qrPlaceholder">
+                <div style="font-size:38px;color:var(--cyan)">▦</div>
+                <b data-ar="رمز الربط يظهر هنا" data-en="Pairing code appears here">رمز الربط يظهر هنا</b>
+                <div class="muted" data-ar="أنشئ الغرفة أولاً" data-en="Create a room first">أنشئ الغرفة أولاً</div>
+              </div>
+              <div id="qrcode"></div>
+              <div class="code" id="roomCode"></div>
+              <div class="muted" id="qrHint" data-ar="امسح الرمز من جهاز الاستقبال" data-en="Scan code from receiving device">امسح الرمز من جهاز الاستقبال</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Receive Panel -->
+        <section class="panel" id="receive">
+          <div class="grid">
+            <div>
+              <h2 data-ar="اتصل بالجهاز المرسل" data-en="Connect to sender device">اتصل بالجهاز المرسل</h2>
+              <p class="desc" data-ar="امسح رمز QR الذي يظهر على جهاز الإرسال، أو أدخل رمز الربط المكوّن من 8 خانات." data-en="Scan the QR code shown on the sender device, or enter the 8-character pairing code.">
+                امسح رمز QR الذي يظهر على جهاز الإرسال، أو أدخل رمز الربط المكوّن من 8 خانات.
+              </p>
+              <label for="joinCode" data-ar="رمز الربط" data-en="Pairing Code">رمز الربط</label>
+              <input class="field" id="joinCode" inputmode="text" maxlength="8" placeholder="A1B2C3D4">
+              <div class="actions">
+                <button class="btn" id="joinRoom" data-ar="اتصال" data-en="Connect">اتصال</button>
+                <button class="btn alt" id="scanBtn" data-ar="مسح QR بالكاميرا" data-en="Scan QR with Camera">مسح QR بالكاميرا</button>
+              </div>
+              <div class="notice" id="receiveNotice" data-ar="بعد الاتصال ستظهر الملفات المستلمة هنا." data-en="Once connected, received files will appear here.">بعد الاتصال ستظهر الملفات المستلمة هنا.</div>
+              <div id="incoming" class="hidden">
+                <div class="progress"><div class="bar" id="receiveBar"></div></div>
+                <div class="muted" id="receiveProgress" data-ar="جاهز للاستقبال" data-en="Ready to receive">جاهز للاستقبال</div>
+                <div id="receivedFiles" style="margin-top:12px"></div>
+              </div>
+            </div>
+
+            <div class="qrbox">
+              <video id="camera" class="hidden" playsinline style="width:100%;max-width:260px;border-radius:12px"></video>
+              <div id="scanPlaceholder">
+                <div style="font-size:38px;color:var(--cyan)">▣</div>
+                <b data-ar="الكاميرا جاهزة للمسح" data-en="Camera ready to scan">الكاميرا جاهزة للمسح</b>
+                <div class="muted" data-ar="اسمح بالوصول للكاميرا عند الطلب" data-en="Allow camera access when prompted">اسمح بالوصول للكاميرا عند الطلب</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Browser Method Section -->
+    <section>
+      <div class="section-head">
+        <h2 data-ar="طريقة الربط السريع" data-en="Quick pairing method">طريقة الربط السريع</h2>
+        <p data-ar="استخدم المتصفح مباشرة بكل سهولة وأمان" data-en="Use your browser directly with ease and security">استخدم المتصفح مباشرة بكل سهولة وأمان</p>
+      </div>
+      <div class="methods">
+        <article class="method primary">
+          <div style="width:48px;height:48px;border-radius:15px;background:#22d3ee;color:#071923;display:grid;place-items:center;font-weight:900;font-size:24px;margin-bottom:16px;box-shadow:0 0 20px rgba(34,211,238,.25);">D</div>
+          <div class="tag" data-ar="الأسهل · بلا تثبيت" data-en="Easiest · No install">الأسهل · بلا تثبيت</div>
+          <h3 data-ar="من المتصفح مباشرة" data-en="Directly from browser">من المتصفح مباشرة</h3>
+          <p data-ar="أنت تستخدم الآن النسخة المدمجة! أنشئ رمز الربط بالأعلى وابدأ النقل فوراً بين أجهزتك." data-en="You're using the built-in web app right now! Generate a pairing code above and start transferring immediately.">
+            أنت تستخدم الآن النسخة المدمجة! أنشئ رمز الربط بالأعلى وابدأ النقل فوراً بين أجهزتك.
+          </p>
+          <a class="btn" href="#transferApp" data-ar="ابدأ النقل بالأعلى ↑" data-en="Start Transfer Above ↑">ابدأ النقل بالأعلى ↑</a>
+          <a class="underlink" href="https://pc.drop.dev/" target="_blank" rel="noopener" data-ar="نسخة الويب الرسمية ↗" data-en="Official web app ↗">نسخة الويب الرسمية ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- How Pairing Works Section -->
+    <section class="pair">
+      <div class="pair-copy">
+        <div class="tag" data-ar="كيف يعمل الربط" data-en="HOW PAIRING WORKS">كيف يعمل الربط</div>
+        <h2 data-ar="على الجوال — امسح الباركود" data-en="On your phone — scan the QR code">على الجوال — امسح الباركود</h2>
+        <p data-ar="يظهر رمز QR على شاشة الكمبيوتر عند إنشاء الغرفة. امسحه بكاميرا جوالك أو من تبويب الاستقبال ليرتبط الجهازان مباشرة." data-en="A QR code appears on your computer when you create a room. Scan it with your phone camera or from the Receive tab to pair both devices directly.">
+          يظهر رمز QR على شاشة الكمبيوتر عند إنشاء الغرفة. امسحه بكاميرا جوالك أو من تبويب الاستقبال ليرتبط الجهازان مباشرة.
+        </p>
+        <div class="ticks">
+          <span data-ar="آيفون أو أندرويد" data-en="iPhone or Android">آيفون أو أندرويد</span>
+          <span data-ar="يفتح في المتصفح، بلا تحميل تطبيق" data-en="Opens in your browser — no app download">يفتح في المتصفح، بلا تحميل تطبيق</span>
+          <span data-ar="نقل مباشر بتقنية WebRTC" data-en="Direct peer-to-peer WebRTC transfer">نقل مباشر بتقنية WebRTC</span>
+        </div>
+        <div style="margin-top:22px">
+          <a class="btn" href="#transferApp" onclick="document.querySelector('[data-tab=receive]').click()" data-ar="افتح تبويب الاستقبال ↑" data-en="Open Receive Tab ↑">افتح تبويب الاستقبال ↑</a>
+        </div>
+      </div>
+
+      <div class="visual" aria-label="Phone and computer pairing illustration">
+        <div class="devices">
+          <div class="screen">
+            <svg viewBox="0 0 48 48" width="48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="6" width="40" height="28" rx="3"/><path d="M16 42h16M24 34v8M11 12h26"/></svg>
+          </div>
+          <div class="linkline"></div>
+          <div class="phone">
+            <svg viewBox="0 0 30 50" width="27" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="22" height="46" rx="4"/><path d="M12 7h6M13 42h4"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="section-head">
+        <h2 data-ar="أسئلة سريعة" data-en="Quick questions">أسئلة سريعة</h2>
+        <p data-ar="كل ما تحتاج معرفته قبل البدء" data-en="Everything you need to know before getting started">كل ما تحتاج معرفته قبل البدء</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary data-ar="تعذّر مسح الباركود؟" data-en="Can't scan the QR code?">تعذّر مسح الباركود؟</summary>
+          <p data-ar="افتح نفس الصفحة في جوالك، انتقل إلى تبويب «استقبال ملفات»، ثم اكتب الأرقام والحروف الثمانية الظاهرة أسفل الباركود واضغط اتصال." data-en="Open this page on your phone, switch to the 'Receive files' tab, type the 8 characters shown below the QR code, and tap Connect.">
+            افتح نفس الصفحة في جوالك، انتقل إلى تبويب «استقبال ملفات»، ثم اكتب الأرقام والحروف الثمانية الظاهرة أسفل الباركود واضغط اتصال.
+          </p>
+        </details>
+        <details>
+          <summary data-ar="هل يعمل على الآيفون؟" data-en="Does it work on iPhone?">هل يعمل على الآيفون؟</summary>
+          <p data-ar="نعم. افتح الصفحة في سفاري على اتصال HTTPS، ويمكنك إضافتها إلى الشاشة الرئيسية من زرّ المشاركة لسهولة الوصول." data-en="Yes. Open the page in Safari over HTTPS, and add it to your home screen from the Share menu for quick access.">
+            نعم. افتح الصفحة في سفاري على اتصال HTTPS، ويمكنك إضافتها إلى الشاشة الرئيسية من زرّ المشاركة لسهولة الوصول.
+          </p>
+        </details>
+        <details>
+          <summary data-ar="هل ما أرسله آمن؟" data-en="Are my transfers secure?">هل ما أرسله آمن؟</summary>
+          <p data-ar="نعم، يتم النقل مباشرة بين جهازيك عبر تقنية WebRTC المشفرة (Peer-to-Peer) دون تخزين ملفاتك على أي خادم وسيط." data-en="Yes, transfers happen directly between your devices via encrypted WebRTC peer-to-peer connection without storing your files on any server.">
+            نعم، يتم النقل مباشرة بين جهازيك عبر تقنية WebRTC المشفرة (Peer-to-Peer) دون تخزين ملفاتك على أي خادم وسيط.
+          </p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="foot">
+      <span>© Drop — <span data-ar="جميع الحقوق محفوظة · اتصال مباشر WebRTC" data-en="All rights reserved · Direct WebRTC">جميع الحقوق محفوظة · اتصال مباشر WebRTC</span></span>
+      <nav class="footlinks">
+        <a href="https://drop.dev/privacy.html" target="_blank" rel="noopener" data-ar="سياسة الخصوصية" data-en="Privacy policy">سياسة الخصوصية</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<!-- External Libraries for WebRTC, QR Generation & QR Scanning -->
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js"></script>
+
+<script>
+const $ = id => document.getElementById(id);
+let peer = null, conn = null, room = null, files = [], cameraStream = null, reader = null, received = null;
+let currentLang = 'ar';
+
+const i18n = {
+  ar: {
+    disconnected: 'غير متصل',
+    readyToPair: 'جاهز للربط',
+    connected: 'متصل بالجهاز الآخر',
+    connLost: 'انقطع الاتصال',
+    connError: 'خطأ اتصال',
+    creatingConn: 'جارٍ إنشاء اتصال آمن...',
+    roomReady: 'الغرفة جاهزة. امسح QR أو أدخل الرمز على الجهاز الآخر.',
+    peerPaired: 'تم ربط الجهاز الآخر بنجاح. يمكنك إرسال الملفات الآن.',
+    createErr: 'تعذّر إنشاء الاتصال: ',
+    peerClosed: 'انقطع الاتصال بالجهاز الآخر.',
+    peerErr: 'حدث خطأ أثناء الاتصال.',
+    invalidCode: 'أدخل رمزاً صحيحاً من 8 خانات.',
+    connecting: 'جارٍ الاتصال بالجهاز المرسل...',
+    connectedOk: 'تم الاتصال! أرسل الملفات من الجهاز الآخر.',
+    connectErr: 'تعذّر الاتصال: ',
+    codeRead: 'تمت قراءة رمز الربط. اضغط اتصال للمتابعة.',
+    sendingDone: 'اكتمل إرسال الملفات.',
+    sendingDoneShort: 'اكتمل الإرسال',
+    sendStopped: 'توقف الإرسال. تحقق من اتصال الجهازين.',
+    receiving: 'استقبال: ',
+    receivingNotice: 'يتم استقبال ',
+    download: 'تنزيل ',
+    completed: 'اكتمل: ',
+    receivedOk: 'تم استلام الملف بنجاح.',
+    qrScanned: 'تم مسح الرمز. اضغط اتصال.',
+    camErr: 'تعذّر تشغيل الكاميرا. استخدم إدخال الرمز يدوياً.'
+  },
+  en: {
+    disconnected: 'Disconnected',
+    readyToPair: 'Ready to pair',
+    connected: 'Connected to peer',
+    connLost: 'Disconnected',
+    connError: 'Connection error',
+    creatingConn: 'Creating secure connection...',
+    roomReady: 'Room ready. Scan QR or enter code on the other device.',
+    peerPaired: 'Device paired successfully. You can send files now.',
+    createErr: 'Failed to create connection: ',
+    peerClosed: 'Connection to the other device was lost.',
+    peerErr: 'An error occurred during connection.',
+    invalidCode: 'Please enter a valid 8-character code.',
+    connecting: 'Connecting to sender device...',
+    connectedOk: 'Connected! Send files from the other device.',
+    connectErr: 'Failed to connect: ',
+    codeRead: 'Pairing code detected. Click Connect to continue.',
+    sendingDone: 'All files sent successfully.',
+    sendingDoneShort: 'Transfer complete',
+    sendStopped: 'Transfer interrupted. Check device connection.',
+    receiving: 'Receiving: ',
+    receivingNotice: 'Receiving ',
+    download: 'Download ',
+    completed: 'Completed: ',
+    receivedOk: 'File received successfully.',
+    qrScanned: 'QR code scanned. Click Connect.',
+    camErr: 'Could not start camera. Please enter code manually.'
+  }
+};
+
+function t(key) { return i18n[currentLang][key] || key; }
+
+// Language Switcher
+const arBtn = $('arBtn'), enBtn = $('enBtn');
+function setLang(lang) {
+  currentLang = lang;
+  const isAr = lang === 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    el.innerHTML = el.dataset[lang];
+  });
+  arBtn.classList.toggle('active', isAr);
+  enBtn.classList.toggle('active', !isAr);
+}
+arBtn.addEventListener('click', () => setLang('ar'));
+enBtn.addEventListener('click', () => setLang('en'));
+
+// UI Helpers
+function notice(id, msg, type = '') {
+  const el = $(id);
+  el.textContent = msg;
+  el.className = 'notice ' + type;
+}
+
+function setNet(on, msg) {
+  $('lamp').classList.toggle('on', on);
+  $('netStatus').textContent = msg;
+}
+
+// Tabs
+document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-tab]').forEach(x => x.classList.toggle('active', x === b));
+  document.querySelectorAll('.panel').forEach(x => x.classList.toggle('active', x.id === b.dataset.tab));
+});
+
+// WebRTC PeerJS Logic
+function makePeer(id) { return new Peer(id, { debug: 1 }); }
+function randCode() {
+  return Array.from(crypto.getRandomValues(new Uint8Array(4)))
+    .map(x => x.toString(16).padStart(2, '0'))
+    .join('')
+    .toUpperCase();
+}
+
+$('createRoom').onclick = () => {
+  if (peer) peer.destroy();
+  room = randCode();
+  peer = makePeer('drop-' + room);
+  notice('sendNotice', t('creatingConn'));
+
+  peer.on('open', id => {
+    setNet(true, t('readyToPair'));
+    $('qrPlaceholder').classList.add('hidden');
+    $('qrcode').innerHTML = '';
+    $('roomCode').textContent = room;
+    $('qrcode').classList.remove('hidden');
+    new QRCode($('qrcode'), {
+      text: location.origin + location.pathname + '?join=' + room,
+      width: 170,
+      height: 170,
+      colorDark: '#071923',
+      colorLight: '#ffffff'
+    });
+    $('senderFiles').classList.remove('hidden');
+    notice('sendNotice', t('roomReady'), 'good');
+  });
+
+  peer.on('connection', c => {
+    if (conn) { c.close(); return; }
+    conn = c;
+    wireConnection();
+    notice('sendNotice', t('peerPaired'), 'good');
+    $('sendFiles').disabled = !files.length;
+  });
+
+  peer.on('error', e => {
+    notice('sendNotice', t('createErr') + e.type, 'bad');
+    setNet(false, t('connError'));
+  });
+};
+
+function wireConnection() {
+  conn.on('open', () => {
+    setNet(true, t('connected'));
+    $('incoming').classList.remove('hidden');
+  });
+  conn.on('data', handleData);
+  conn.on('close', () => {
+    setNet(false, t('connLost'));
+    notice('receiveNotice', t('peerClosed'), 'bad');
+  });
+  conn.on('error', () => notice('receiveNotice', t('peerErr'), 'bad'));
+}
+
+$('joinRoom').onclick = () => {
+  const code = $('joinCode').value.trim().toUpperCase();
+  if (!/^[A-F0-9]{8}$/.test(code)) {
+    notice('receiveNotice', t('invalidCode'), 'bad');
+    return;
+  }
+  connect(code);
+};
+
+function connect(code) {
+  if (peer) peer.destroy();
+  peer = makePeer();
+  notice('receiveNotice', t('connecting'));
+  peer.on('open', () => {
+    conn = peer.connect('drop-' + code, { reliable: true, serialization: 'binary' });
+    wireConnection();
+    conn.on('open', () => notice('receiveNotice', t('connectedOk'), 'good'));
+  });
+  peer.on('error', e => notice('receiveNotice', t('connectErr') + e.type, 'bad'));
+}
+
+// Auto-fill from QR URL parameter
+const params = new URLSearchParams(location.search);
+if (params.has('join')) {
+  $('joinCode').value = params.get('join').toUpperCase();
+  document.querySelector('[data-tab="receive"]').click();
+  notice('receiveNotice', t('codeRead'), 'good');
+}
+
+// File Selection & Drag/Drop
+function renderFiles() {
+  $('fileList').innerHTML = '';
+  files.forEach(f => {
+    let d = document.createElement('div');
+    d.className = 'fileline';
+    d.textContent = '📄 ' + f.name + ' · ' + (f.size / 1024 / 1024).toFixed(2) + ' MB';
+    $('fileList').append(d);
+  });
+  $('sendFiles').disabled = !files.length || !conn || !conn.open;
+}
+
+function addFiles(list) {
+  files = [...files, ...Array.from(list)];
+  renderFiles();
+}
+
+$('fileInput').onchange = e => addFiles(e.target.files);
+$('drop').onclick = () => $('fileInput').click();
+$('drop').ondragover = e => { e.preventDefault(); $('drop').classList.add('drag'); };
+$('drop').ondragleave = () => $('drop').classList.remove('drag');
+$('drop').ondrop = e => {
+  e.preventDefault();
+  $('drop').classList.remove('drag');
+  addFiles(e.dataTransfer.files);
+};
+
+// Chunked File Transfer
+const wait = ms => new Promise(r => setTimeout(r, ms));
+async function sendOne(file) {
+  const chunkSize = 16 * 1024;
+  conn.send({ type: 'start', name: file.name, size: file.size, mime: file.type || 'application/octet-stream' });
+  let offset = 0;
+  while (offset < file.size) {
+    const buf = await file.slice(offset, offset + chunkSize).arrayBuffer();
+    conn.send(buf);
+    offset += buf.byteLength;
+    $('sendBar').style.width = (offset / file.size * 100) + '%';
+    $('sendProgress').textContent = `${file.name}: ${Math.round(offset / file.size * 100)}%`;
+    while (conn.dataChannel && conn.dataChannel.bufferedAmount > 1024 * 1024) await wait(40);
+    await wait(4);
+  }
+  conn.send({ type: 'end' });
+}
+
+$('sendFiles').onclick = async () => {
+  if (!conn || !conn.open) return;
+  $('sendFiles').disabled = true;
+  try {
+    for (const f of files) await sendOne(f);
+    notice('sendNotice', t('sendingDone'), 'good');
+    $('sendProgress').textContent = t('sendingDoneShort');
+  } catch (e) {
+    notice('sendNotice', t('sendStopped'), 'bad');
+  } finally {
+    $('sendFiles').disabled = false;
+  }
+};
+
+function handleData(data) {
+  if (data && typeof data === 'object' && !(data instanceof ArrayBuffer) && !(data instanceof Uint8Array) && data.type) {
+    if (data.type === 'start') {
+      received = { name: data.name, size: data.size, mime: data.mime, chunks: [], got: 0 };
+      $('incoming').classList.remove('hidden');
+      $('receiveProgress').textContent = t('receiving') + data.name;
+      notice('receiveNotice', t('receivingNotice') + data.name + '...', 'good');
+    } else if (data.type === 'end' && received) {
+      const blob = new Blob(received.chunks, { type: received.mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = received.name;
+      a.className = 'btn alt';
+      a.style.marginBottom = '8px';
+      a.textContent = '⬇ ' + t('download') + received.name;
+      $('receivedFiles').append(a);
+      $('receivedFiles').append(document.createElement('br'));
+      $('receiveBar').style.width = '100%';
+      $('receiveProgress').textContent = t('completed') + received.name;
+      notice('receiveNotice', t('receivedOk'), 'good');
+      received = null;
+    }
+    return;
+  }
+  if (received) {
+    const part = data instanceof ArrayBuffer ? data : data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+    received.chunks.push(part);
+    received.got += part.byteLength;
+    $('receiveBar').style.width = Math.min(100, received.got / received.size * 100) + '%';
+    $('receiveProgress').textContent = `${received.name}: ${Math.round(received.got / received.size * 100)}%`;
+  }
+}
+
+// Camera QR Scanner
+$('scanBtn').onclick = async () => {
+  try {
+    const video = $('camera');
+    cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+    video.srcObject = cameraStream;
+    video.classList.remove('hidden');
+    $('scanPlaceholder').classList.add('hidden');
+    await video.play();
+    reader = new ZXing.BrowserMultiFormatReader();
+    reader.decodeFromVideoElement(video, (result, err) => {
+      if (result) {
+        try {
+          const u = new URL(result.getText());
+          const code = u.searchParams.get('join');
+          if (code) {
+            $('joinCode').value = code.toUpperCase();
+            cameraStream.getTracks().forEach(t => t.stop());
+            video.classList.add('hidden');
+            $('scanPlaceholder').classList.remove('hidden');
+            notice('receiveNotice', t('qrScanned'), 'good');
+          }
+        } catch (e) {}
+      }
+    });
+  } catch (e) {
+    notice('receiveNotice', t('camErr'), 'bad');
+  }
+};
+</script>
+</body>
+</html>
